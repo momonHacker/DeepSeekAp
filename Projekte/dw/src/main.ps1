@@ -2,7 +2,17 @@
 
 function Show-Info {
     Write-Host "dw - Datei-Werkstatt"
-    Write-Host "Aktionen: info, list, count, tree, find <pattern>, size"
+    Write-Host "Aktionen: info, help, list, count, tree, find <pattern>, size"
+}
+
+function Show-Help {
+    Write-Host "dw - Datei-Werkstatt`n"
+    Write-Host "  dw                    Info"
+    Write-Host "  dw -Action list       Dateien im aktuellen Ordner"
+    Write-Host "  dw -Action count      Anzahl Eintraege"
+    Write-Host "  dw -Action tree       Ordnerbaum (.git/.idea ausgeblendet)"
+    Write-Host "  dw -Action find -Pattern '*.md'   Dateien suchen"
+    Write-Host "  dw -Action size       Anzahl und Gesamtgroesse"
 }
 
 function Show-Files {
@@ -40,6 +50,7 @@ function Show-Size {
 
 switch ($Action) {
     "info" { Show-Info }
+    "help" { Show-Help }
     "list" { Show-Files }
     "count" { Show-Count }
     "tree" { Show-Tree }
