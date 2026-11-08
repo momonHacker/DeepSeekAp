@@ -1,5 +1,5 @@
-Startnotiz – 08.11.2026
+﻿Startnotiz - 08.11.2026
 Arbeitsbereich eingerichtet (D:\DeepSeek\AprojectPATITIONA).
-Git-Repo initialisiert, 2 Commits.
+Git-Repo initialisiert, 11 Commits.
 Struktur: Notizen, Projekte, Archiv, README, .gitignore (.idea ignoriert).
-Nächste Schritte: [offen]
+Naechste Schritte: [offen]
