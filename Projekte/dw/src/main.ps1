@@ -1,18 +1,19 @@
-﻿param([string]$Action = "info", [string]$Pattern = "")
+﻿param([string]$Action = "info", [string]$Pattern = "", [string]$Name = "")
 
 function Show-Info {
     Write-Host "dw - Datei-Werkstatt"
-    Write-Host "Aktionen: info, help, list, count, tree, find <pattern>, size"
+    Write-Host "Aktionen: info, help, list, count, tree, find, size, new"
 }
 
 function Show-Help {
     Write-Host "dw - Datei-Werkstatt`n"
-    Write-Host "  dw                    Info"
-    Write-Host "  dw -Action list       Dateien im aktuellen Ordner"
-    Write-Host "  dw -Action count      Anzahl Eintraege"
-    Write-Host "  dw -Action tree       Ordnerbaum (.git/.idea ausgeblendet)"
-    Write-Host "  dw -Action find -Pattern '*.md'   Dateien suchen"
-    Write-Host "  dw -Action size       Anzahl und Gesamtgroesse"
+    Write-Host "  dw                              Info"
+    Write-Host "  dw -Action list                 Dateien"
+    Write-Host "  dw -Action count                Anzahl"
+    Write-Host "  dw -Action tree                 Ordnerbaum"
+    Write-Host "  dw -Action find -Pattern '*.md' Suchen"
+    Write-Host "  dw -Action size                 Groesse"
+    Write-Host "  dw -Action new -Name 'notiz'    Datei mit Datum anlegen"
 }
 
 function Show-Files {
@@ -48,6 +49,15 @@ function Show-Size {
     Write-Host ("Dateien: {0}  Groesse: {1:N0} Bytes" -f $files.Count, $sum)
 }
 
+function New-Note {
+    if (-not $Name) { Write-Host "Name fehlt."; return }
+    $date = Get-Date -Format "yyyy-MM-dd"
+    $path = "${date}_${Name}.txt"
+    if (Test-Path $path) { Write-Host "Existiert: $path"; return }
+    Set-Content -Path $path -Value "$date - $Name`n" -Encoding UTF8
+    Write-Host "Angelegt: $path"
+}
+
 switch ($Action) {
     "info" { Show-Info }
     "help" { Show-Help }
@@ -56,5 +66,6 @@ switch ($Action) {
     "tree" { Show-Tree }
     "find" { Find-Files }
     "size" { Show-Size }
+    "new" { New-Note }
     default { Write-Host "Unbekannt: $Action" }
 }
