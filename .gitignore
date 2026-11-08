@@ -1,0 +1,11 @@
+﻿# IDE (kein Zugriff, wird ignoriert)
+.idea/
+*.iml
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temp
+*.tmp
+*.log
