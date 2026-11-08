@@ -2,7 +2,7 @@
 
 function Show-Info {
     Write-Host "dw - Datei-Werkstatt"
-    Write-Host "Aktionen: info, list, count, tree, find <pattern>"
+    Write-Host "Aktionen: info, list, count, tree, find <pattern>, size"
 }
 
 function Show-Files {
@@ -31,11 +31,19 @@ function Find-Files {
         ForEach-Object { $_.FullName.Substring((Get-Location).Path.Length + 1) }
 }
 
+function Show-Size {
+    $files = Get-ChildItem -Recurse -Force -File |
+        Where-Object { $_.FullName -notmatch '\\\.git(\\|$)' -and $_.FullName -notmatch '\\\.idea(\\|$)' }
+    $sum = ($files | Measure-Object Length -Sum).Sum
+    Write-Host ("Dateien: {0}  Groesse: {1:N0} Bytes" -f $files.Count, $sum)
+}
+
 switch ($Action) {
     "info" { Show-Info }
     "list" { Show-Files }
     "count" { Show-Count }
     "tree" { Show-Tree }
     "find" { Find-Files }
+    "size" { Show-Size }
     default { Write-Host "Unbekannt: $Action" }
 }
