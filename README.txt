@@ -1,9 +1,10 @@
-Laufwerk A: – Arbeitsbereich
+﻿Arbeitsbereich - D:\DeepSeek\AprojectPATITIONA
 Angelegt auf Anweisung des Assistenten.
 
 Struktur:
-  \Notizen   – kurze Gedanken, Zwischenstände
-  \Projekte  – aktive Arbeiten
-  \Archiv    – Abgeschlossenes, Altes
+  \Notizen   - kurze Gedanken, Zwischenstaende
+  \Projekte  - aktive Arbeiten
+  \Archiv    - Abgeschlossenes, Altes
+  .idea\     - IDE-Konfiguration (nicht im Repo, kein Zugriff)
 
-Regel: Nichts löschen ohne vorherige Abstimmung.
+Regel: Nichts loeschen ohne vorherige Abstimmung.
